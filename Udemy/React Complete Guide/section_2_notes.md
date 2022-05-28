@@ -12,7 +12,7 @@
 
 ## classes
 - constructor is instantiated like below, give properties using this keyword.
-`
+```javascript
 class person {
     constructor() {
         this.name = "max"
@@ -23,4 +23,4 @@ class person {
 }
 const person = new Person()
 person.printmyname()
-`
+```
