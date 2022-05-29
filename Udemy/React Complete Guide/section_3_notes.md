@@ -32,3 +32,5 @@
 - so not just my written code, but also entire rct package code.
 - so normally, the way react components are written are not supported in the browser bc of the combo of js and html, when run, rct transforms the code into usable browser code.
 
+
+
