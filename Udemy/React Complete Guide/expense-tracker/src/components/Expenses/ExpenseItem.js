@@ -6,7 +6,8 @@ import './ExpenseItem.css';
 
 //output title and amount
 const ExpenseItem = (props) => {
-  useState(props.title)
+
+  const [title, setTitle] = useState(props.title)
 
   return (
     <Card className='expense-item'>
