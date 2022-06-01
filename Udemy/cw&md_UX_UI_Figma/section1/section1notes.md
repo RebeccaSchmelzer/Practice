@@ -20,3 +20,25 @@
 - phase 4: maintenance - designer + dev
     - make improvement
     - user testing
+
+## skills to be a top designer
+- 4 key elements
+    - graphic design: the visuals
+        - color theory
+        - layout
+        - typography
+        - sketching
+        - fonts
+    - UX
+        - user experience and interface design
+        - provide users with best possible experience
+        - understand your custormer
+    - goal conversion
+        - drive results that clients want
+        - satisfy problem statement
+    - platform dev
+        - program
+
+- goodui: for goal conversion
+- awwwards: get design ideas
+- behance: portfolio inspo
