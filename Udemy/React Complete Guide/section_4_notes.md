@@ -18,4 +18,5 @@ const [title, setTitle] = useState(props.title)
 - The first element is a point at that managed value, starting value. So initially at props title, the value stored in props title
 - second element here is a function which we can later call to set a new title
 - so to change the data on an event change, assign setTitle as new data within that called function.
+
  
