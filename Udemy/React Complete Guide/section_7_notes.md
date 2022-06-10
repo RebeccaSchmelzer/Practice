@@ -1,0 +1,2 @@
+## styling html classes within a component
+- any class listed thru html in a react component could hook onto any other css that hooks that class, not just the subsequent css component for that react component.
