@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {configureStore} from '@reduxjs/toolkit'
 //wrapper to allow access to the store, set store to ur store
 import { Provider } from 'react-redux';
+import userReducer from "./features/user"
 
 //create a store to contain all states that you want to change
 //configure store allows u to create the store, init it.
@@ -18,7 +19,11 @@ const store = configureStore({
   //and returns the new value of the state
   //so u define reducers for all diff states in app to manage and change them
   //we need a user state -> so when u login u access the user state, data appears -> so we need a user reducer
-  reducer: {}
+
+  //import the userreducer, just a name and put it in a user component
+  reducer: {
+    user: userReducer,
+  }
 })
 
 

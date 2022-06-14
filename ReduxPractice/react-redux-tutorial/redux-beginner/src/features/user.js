@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 //contains info on reducer, actions want to take on the state, and actual name of the state
-const userSlice = createSlice({
+export const userSlice = createSlice({
     //name of the slice, name of the state
     name:"user",
     //initial values
@@ -19,7 +19,15 @@ const userSlice = createSlice({
             //type: trigger diff types of actions u wanna take, 
                 //so if u pass in a type, to conditionally do diff stuff
         login: (state, action) => {
-
+            //change the state into whatever u get from the payload
+            state.value = action.payload
         },
     },
 })
+
+//export all the actions u wanna use, so login would be one of those
+export const {login} = userSlice.actions
+
+//set init state from session storage or local storage
+
+export default userSlice.reducer;
