@@ -30,11 +30,13 @@ const CourseInput = props => {
   };
 
     //overwrite all styles when styling like this
+    //class name for div is dynamic, strings can be concatted
+    //check if isvalid is not true, if thats the case, insert invalid onto class and then those styles are placed
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className="form-control">
-        <label style={{color: !isValid ? 'red' : 'black'}}>Course Goal</label>
-        <input style={{borderColor: !isValid ? 'red' : 'black', background: !isValid ? 'salmon' : 'transparent'}} type="text" onChange={goalInputChangeHandler} />
+      <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
+        <label >Course Goal</label>
+        <input type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
@@ -42,3 +44,8 @@ const CourseInput = props => {
 };
 
 export default CourseInput;
+
+
+// style={{color: !isValid ? 'red' : 'black'}}
+
+// style={{borderColor: !isValid ? 'red' : 'black', background: !isValid ? 'salmon' : 'transparent'}}
