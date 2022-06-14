@@ -1,13 +1,15 @@
 //allows u to create a reducer, split logic and access it thru app, easy to change and access
 import { createSlice } from "@reduxjs/toolkit";
 
+//call it less times
+const initVal = {name:"", age:0, email:""}
 
 //contains info on reducer, actions want to take on the state, and actual name of the state
 export const userSlice = createSlice({
     //name of the slice, name of the state
     name:"user",
     //initial values
-    initialState:{value:{name:"", age:0, email:""}},
+    initialState:{value:initVal},
     //pass down the functions used to change the values of the app
     reducers: {
         //function 1, login
@@ -22,11 +24,15 @@ export const userSlice = createSlice({
             //change the state into whatever u get from the payload
             state.value = action.payload
         },
+
+        logout: (state) => {
+            state.value = initVal
+        }
     },
 })
 
 //export all the actions u wanna use, so login would be one of those
-export const {login} = userSlice.actions
+export const {login, logout} = userSlice.actions
 
 //set init state from session storage or local storage
 
