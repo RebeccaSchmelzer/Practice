@@ -8,3 +8,6 @@
     - holds all states and allows modification
     - access store thru every component
     - now you have global states without passing thru props
+
+# redux-beginner into
+- create an app that looks like the above pic, with two components for login and displaying the profile
