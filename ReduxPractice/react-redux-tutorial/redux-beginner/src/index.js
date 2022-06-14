@@ -13,7 +13,11 @@ import { Provider } from 'react-redux';
 //store contains all reducers that will be used in the app
 const store = configureStore({
   //set it to empty obj bc u dont have reducers yet
-  //reducer is a function that takes in some info about 
+  //reducer is a function that takes in some info about current states, 
+  //so takes in prev value of the state, and it also takes in an action that u wanna perform on the state
+  //and returns the new value of the state
+  //so u define reducers for all diff states in app to manage and change them
+  //we need a user state -> so when u login u access the user state, data appears -> so we need a user reducer
   reducer: {}
 })
 

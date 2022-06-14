@@ -11,3 +11,4 @@
 
 # redux-beginner into
 - create an app that looks like the above pic, with two components for login and displaying the profile
+- notes are on index.js
