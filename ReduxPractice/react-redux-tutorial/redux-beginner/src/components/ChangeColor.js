@@ -1,8 +1,30 @@
+
+/*usestate for states u wanna handle locally, redux is global*/
+import { useState } from "react"
 import React from 'react'
+import { useDispatch } from "react-redux"
+import { changeColor } from "../features/theme"
 
 function ChangeColor() {
+
+    //every time theres a change in value, u set the color to be equal to the target. state = input text
+    const [color, setColor] = useState("")
+    const dispatch = useDispatch()
+
   return (
-    <div>Change Color</div>
+    <div>
+        <input  type="text" 
+                onChange={(event) => {
+                    setColor(event.target.value)
+                }} 
+        />
+        <button onClick={() => {
+            dispatch(changeColor(color))
+        }}
+        >
+            Change Color
+        </button>
+    </div>
   )
 }
 

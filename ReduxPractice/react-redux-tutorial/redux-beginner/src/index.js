@@ -7,6 +7,8 @@ import {configureStore} from '@reduxjs/toolkit'
 //wrapper to allow access to the store, set store to ur store
 import { Provider } from 'react-redux';
 import userReducer from "./features/user"
+import themeReducer from "./features/user"
+
 
 //create a store to contain all states that you want to change
 //configure store allows u to create the store, init it.
@@ -23,6 +25,7 @@ const store = configureStore({
   //import the userreducer, just a name and put it in a user component
   reducer: {
     user: userReducer,
+    theme: themeReducer
   }
 })
 
