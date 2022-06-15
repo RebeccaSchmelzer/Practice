@@ -16,3 +16,9 @@
 - step thru code, step by step, and use the step into next function call
     - will run to the next line of code after the breakpoint
 - then run the debugger again for the next function call
+
+## react devtools
+- for chrome!
+- look for components on devtools
+    - (elements renders the entire dom)
+    - components shows u the components and their info and the order in which theyre rendered
