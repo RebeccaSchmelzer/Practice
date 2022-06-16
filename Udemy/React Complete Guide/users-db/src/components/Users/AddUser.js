@@ -4,7 +4,7 @@ import Card from '../UI/Card'
 import styles from './AddUser.module.css'
 import { useState } from 'react'
 
-const AddUser = () => {
+const AddUser = (props) => {
 
     //var and setvar are used in array destructuring - js syntax
     //usestate always returns an array with exactly 2 elements
@@ -29,7 +29,9 @@ const AddUser = () => {
           return;
         }
         event.preventDefault()
-        console.log(enteredUsername, enteredAge);
+
+        //props is a function, passing a pointer to adduserhandler in the app to onadduser and adduserhandler is a function
+        props.onAddUser(enteredUsername, enteredAge);
         //set the current state to an empty string when form is submitted
         setEnteredUsername('')
         setEnteredAge('')
