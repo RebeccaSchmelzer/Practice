@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../UI/Card'
 
 const AddUser = () => {
     const adduserHandler = (event) => {
@@ -8,6 +9,7 @@ const AddUser = () => {
 
 //parenttheses run it when the component loads!
   return (
+      <Card>
     <form onSubmit={adduserHandler}>
         <label htmlFor='username'>Username</label>
         <input id='username' type='text' />
@@ -17,6 +19,7 @@ const AddUser = () => {
 
         <button type='submit'>Add User</button>
     </form>
+    </Card>
   )
 }
 
