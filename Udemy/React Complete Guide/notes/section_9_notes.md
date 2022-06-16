@@ -3,3 +3,5 @@
 - (just use the div wrapper)
 
 ## creating wrapper components
+-use a Wrapper component instead of a div and return the props.children
+- also React.Fragment or Fragment and u have to import fragment from react

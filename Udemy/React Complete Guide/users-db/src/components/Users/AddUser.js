@@ -4,6 +4,7 @@ import Card from '../UI/Card'
 import styles from './AddUser.module.css'
 import { useState } from 'react'
 import ErrorModal from '../UI/ErrorModal'
+import Wrapper from '../../Helpers/Wrapper'
 
 const AddUser = (props) => {
 
@@ -66,8 +67,10 @@ const AddUser = (props) => {
 //parenttheses run it when the component loads!
 
 //errormodal is only output if u have an error
+
+//wrapper it
   return (
-    <div>
+    <Wrapper>
     {error && (
     <ErrorModal 
     title={error.title} 
@@ -86,7 +89,7 @@ const AddUser = (props) => {
         <Button type='submit'>Add User</Button>
     </form>
     </Card>
-    </div>
+    </Wrapper>
   )
 }
 
