@@ -20,27 +20,26 @@ const AddUser = (props) => {
   const [error, setError] = useState()
 
     const adduserHandler = (event) => {
+      event.preventDefault()
         //prevent the requent from being sent automatically, has to be an onsubmit
 
         //all the code below should only render if the inputs are valid
         if(enteredUsername.trim().length===0 || enteredAge.trim().length===0) {
           //if invalid values set the error holder as this object, access by error.title or message
           setError({
-            title: 'invalid input',
-            message: 'please enter valid values'
-          })
-          
-          return
+            title: 'Invalid input',
+        message: 'Please enter a valid name and age (non-empty values).',
+      });
+      return;
+    }
+    if (+enteredAge < 1) {
+      setError({
+        title: 'Invalid age',
+        message: 'Please enter a valid age (> 0).',
+      });
+      return;
         }
-        //check if the age is a num and greater then 1
-        if(+enteredAge < 1) {
-          setError({
-            title: 'invalid input',
-            message: 'please enter valid values'
-          })
-          return;
-        }
-        event.preventDefault()
+        
 
         //props is a function, passing a pointer to adduserhandler in the app to onadduser and adduserhandler is a function
         props.onAddUser(enteredUsername, enteredAge);
