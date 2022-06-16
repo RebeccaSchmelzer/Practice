@@ -19,8 +19,20 @@ const AddUser = () => {
 
     const adduserHandler = (event) => {
         //prevent the requent from being sent automatically, has to be an onsubmit
+
+        //all the code below should only render if the inputs are valid
+        if(enteredUsername.trim().length===0 || enteredAge.trim().length===0) {
+          return
+        }
+        //check if the age is a num and greater then 1
+        if(+enteredAge < 1) {
+          return;
+        }
         event.preventDefault()
         console.log(enteredUsername, enteredAge);
+        //set the current state to an empty string when form is submitted
+        setEnteredUsername('')
+        setEnteredAge('')
     }
 
       //triggered on every keystroke of the input username
@@ -39,10 +51,10 @@ const AddUser = () => {
       <Card className={styles.input}>
     <form onSubmit={adduserHandler}>
         <label htmlFor='username'>Username</label>
-        <input id='username' type='text' onChange={usernameChangeHandler}/>
+        <input id='username' type='text' value={enteredUsername} onChange={usernameChangeHandler}/>
 
         <label htmlFor='age'>Age (years)</label>
-        <input id='age' type='number' onChange={ageChangeHandler} />
+        <input id='age' type='number' value={enteredAge} onChange={ageChangeHandler} />
 
         <Button type='submit'>Add User</Button>
     </form>
