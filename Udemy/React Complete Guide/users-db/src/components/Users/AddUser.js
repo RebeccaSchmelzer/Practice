@@ -15,10 +15,23 @@ const AddUser = () => {
     //first constant holds latest state snapshot
     //second is a function called to change the state anf trigger the re-render
   const [enteredUsername, setEnteredUsername] = useState('')
+  const [enteredAge, setEnteredAge] = useState('')
 
     const adduserHandler = (event) => {
         //prevent the requent from being sent automatically, has to be an onsubmit
         event.preventDefault()
+        console.log(enteredUsername, enteredAge);
+    }
+
+      //triggered on every keystroke of the input username
+      //gets event object (dom)
+
+    const usernameChangeHandler = (event) => {
+      setEnteredUsername(event.target.value);
+    }
+
+    const ageChangeHandler = (event) => {
+      setEnteredAge(event.target.value);
     }
 
 //parenttheses run it when the component loads!
@@ -26,10 +39,10 @@ const AddUser = () => {
       <Card className={styles.input}>
     <form onSubmit={adduserHandler}>
         <label htmlFor='username'>Username</label>
-        <input id='username' type='text' />
+        <input id='username' type='text' onChange={usernameChangeHandler}/>
 
         <label htmlFor='age'>Age (years)</label>
-        <input id='age' type='number' />
+        <input id='age' type='number' onChange={ageChangeHandler} />
 
         <Button type='submit'>Add User</Button>
     </form>
