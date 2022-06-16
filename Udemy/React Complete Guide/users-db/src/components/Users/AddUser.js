@@ -3,6 +3,7 @@ import Button from '../UI/Button'
 import Card from '../UI/Card'
 import styles from './AddUser.module.css'
 import { useState } from 'react'
+import ErrorModal from '../UI/ErrorModal'
 
 const AddUser = (props) => {
 
@@ -50,6 +51,8 @@ const AddUser = (props) => {
 
 //parenttheses run it when the component loads!
   return (
+    <div>
+    <ErrorModal title="an error occured..." message="something went wrong"/>
       <Card className={styles.input}>
     <form onSubmit={adduserHandler}>
         <label htmlFor='username'>Username</label>
@@ -61,6 +64,7 @@ const AddUser = (props) => {
         <Button type='submit'>Add User</Button>
     </form>
     </Card>
+    </div>
   )
 }
 
