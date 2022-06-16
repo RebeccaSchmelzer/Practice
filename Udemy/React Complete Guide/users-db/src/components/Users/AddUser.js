@@ -17,16 +17,27 @@ const AddUser = (props) => {
     //second is a function called to change the state anf trigger the re-render
   const [enteredUsername, setEnteredUsername] = useState('')
   const [enteredAge, setEnteredAge] = useState('')
+  const [error, setError] = useState()
 
     const adduserHandler = (event) => {
         //prevent the requent from being sent automatically, has to be an onsubmit
 
         //all the code below should only render if the inputs are valid
         if(enteredUsername.trim().length===0 || enteredAge.trim().length===0) {
+          //if invalid values set the error holder as this object, access by error.title or message
+          setError({
+            title: 'invalid input',
+            message: 'please enter valid values'
+          })
+          
           return
         }
         //check if the age is a num and greater then 1
         if(+enteredAge < 1) {
+          setError({
+            title: 'invalid input',
+            message: 'please enter valid values'
+          })
           return;
         }
         event.preventDefault()
@@ -49,10 +60,22 @@ const AddUser = (props) => {
       setEnteredAge(event.target.value);
     }
 
+      //trigger this in error modal bc thats where the button to dissapear it and the backdrop is 
+    const errorHandler = () => {
+      setError(null)
+    };
 //parenttheses run it when the component loads!
+
+//errormodal is only output if u have an error
   return (
     <div>
-    <ErrorModal title="an error occured..." message="something went wrong"/>
+    {error && (
+    <ErrorModal 
+    title={error.title} 
+    message={error.message} 
+    onConfirm={errorHandler}
+    />
+    )}
       <Card className={styles.input}>
     <form onSubmit={adduserHandler}>
         <label htmlFor='username'>Username</label>
