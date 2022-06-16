@@ -21,7 +21,7 @@ function App() {
       //function will get prev state and then append it to the new array
       //then add a new js obj at the end with new vals as the params
       setUsersList((prevUsersList) => {
-        return [...prevUsersList, {name: uName, age: uAge}]
+        return [...prevUsersList, {name: uName, age: uAge, id: Math.random().toString()}]
       })
     }
 
