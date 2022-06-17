@@ -15,3 +15,6 @@
 
 ## refs
 - get access to other dom elements and work with them
+- accessing values with refs is called uncontrolled components
+    - bc they are internal state, not controlled by react!
+    - alot for input components bc they natively have state from the browser but we are manipulating the dom to uncontrol it
