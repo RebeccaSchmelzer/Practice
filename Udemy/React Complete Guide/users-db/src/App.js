@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import './App.css';
 import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersList';
@@ -27,10 +27,10 @@ function App() {
 
       //so when the adduser button is clicked, onadduser is triggered
   return (
-    <div>
+    <Fragment>
       <AddUser onAddUser={adduserHandler}/>
       <UsersList users={usersList}/>
-    </div>
+    </Fragment>
   );
 }
 

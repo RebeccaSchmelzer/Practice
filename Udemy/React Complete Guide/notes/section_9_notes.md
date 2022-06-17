@@ -3,5 +3,12 @@
 - (just use the div wrapper)
 
 ## creating wrapper components
--use a Wrapper component instead of a div and return the props.children
+- use a Wrapper component instead of a div and return the props.children
 - also React.Fragment or Fragment and u have to import fragment from react
+
+## react portals
+- making sure overlays are on top of all logic
+- use a portal to write components however u want but rendered diff in the dom
+- so to use:
+    - place to port to 
+    - let the component know where the portal is to
