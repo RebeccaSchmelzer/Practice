@@ -12,3 +12,6 @@
 - so to use:
     - place to port to 
     - let the component know where the portal is to
+
+## refs
+- get access to other dom elements and work with them
