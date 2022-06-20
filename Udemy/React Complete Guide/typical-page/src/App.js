@@ -12,6 +12,9 @@ function App() {
   //so whenever this component function runs, this will run
   //and is you update the state in here, the component will run again
   //but, will not nrunafter every component reeval, but only if the depens change like when the app starts for the first time, that means the depens change from nothing to having them
+  //so this should only run when the app starts
+  //so this updates the state and triggers the component function to run again
+  // but effect would only run again if the depens change which they wont bc its empty
   useEffect(() => {
     const storedInfo = localStorage.getItem('isLoggedIn')
 
