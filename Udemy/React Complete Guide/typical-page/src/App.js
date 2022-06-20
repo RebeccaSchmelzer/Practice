@@ -7,6 +7,11 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  //we dont wanna run this directly in the component function
+  //this is executed by react, AFTER every component reevaluation
+  //so whenever this component function runs, this will run
+  //and is you update the state in here, the component will run again
+  //but, will not nrunafter every component reeval, but only if the depens change like when the app starts for the first time, that means the depens change from nothing to having them
   useEffect(() => {
     const storedInfo = localStorage.getItem('isLoggedIn')
 
@@ -15,6 +20,8 @@ function App() {
 
     }
   }, []);
+
+
   const loginHandler = (email, password) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
