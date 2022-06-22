@@ -49,6 +49,8 @@ function App() {
     
       <AuthContext.Provider value={{
         isLoggedIn: isLoggedIn,
+        //every listening component will be able to use the onlogout
+        onLogout: logoutHandler
       }}>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
