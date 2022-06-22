@@ -31,3 +31,9 @@
 
 ## context
 - allows you to access state info whithout creating prop chains
+
+## context limitations
+- not for component configs
+- for the button, button should be reusable but of context is used to make sure that user is always logged out onclick, context will not be able to be used other then for that
+- not optimized for high freq changes, so state changes multiple times per second
+- redux is for this
