@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
+import AuthContext from './store/auth-context';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,14 +40,23 @@ function App() {
     setIsLoggedIn(false);
   };
 
+    //provider for context is wrapped around everything
+    //and take out react fragment
+    //listen thru hook or consumer in Nav.js
+    // and u need to mention the data here
+    //now updated by react whenever updated and passed to whomever is listening
   return (
-    <React.Fragment>
+    
+      <AuthContext.Provider value={{
+        isLoggedIn: isLoggedIn,
+      }}>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </React.Fragment>
+      </AuthContext.Provider >
+    
   );
 }
 
