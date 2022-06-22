@@ -28,3 +28,6 @@
     - great for more power
     - more complex state updating logic, always guaranteed newst data
     - considered if you have related pieces of state/data
+
+## context
+- allows you to access state info whithout creating prop chains
