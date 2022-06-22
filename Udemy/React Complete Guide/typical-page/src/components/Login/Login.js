@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useReducer } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import AuthContext from '../../store/auth-context';
 
 //117 outside the component bc it doesnt need to interact with the component
 /*so set the state within this with a new object
@@ -55,6 +56,9 @@ const Login = (props) => {
     value: '', 
     isValid: null,
   })
+
+  //set up use context - 125
+  const authCtx = useContext(AuthContext)
 
   //115 useeffect
 
@@ -150,7 +154,8 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passState.value);
+    //125 change this from props to useContext Hook
+    authCtx.onLogin(emailState.value, passState.value);
   };
 
   return (
