@@ -1,14 +1,15 @@
-import React from 'react';
+/*123 tap into context and use it*/
+import React, {useContext} from 'react';
 //takes a child function
 import AuthContext from '../../store/auth-context';
 
 import classes from './Navigation.module.css';
 
 const Navigation = (props) => {
+  //import useContext, this works better
+  const ctx = useContext(AuthContext)
   return (
-    <AuthContext.Consumer>
-      {(ctx) => {
-        return (
+  
         <nav className={classes.nav}>
         <ul>
           {ctx.isLoggedIn && (
@@ -28,10 +29,7 @@ const Navigation = (props) => {
           )}
         </ul>
       </nav>
-        )
-      }}
-    
-    </AuthContext.Consumer>
+
   );
 };
 
