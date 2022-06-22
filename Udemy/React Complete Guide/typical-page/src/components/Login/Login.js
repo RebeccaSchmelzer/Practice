@@ -18,10 +18,20 @@ const Login = (props) => {
   //helps to make sure we have one piece of code that reruns whenever the depens change
   //side effects are http reqs, also a side effect if save every keystroke after listen
   useEffect(() => {
-    //we want to rerun this for every keystroke and validation
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    )
+    //we want to rerun this for every keystroke and validation - 112
+    //114 - this is not super efficient bc everykey storke is recorded
+    //set the timeout to be 500 seconds before this is triggered
+    const identifier = setTimeout(() => {
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      )  
+    }, 500)
+    
+    //runs as a clean up process beofre useeffect runs agains
+    //clean up also happens whenever the component is rerun
+    return () => {
+      clearTimeout(identifier)
+    }
   }, [enteredEmail, enteredPassword])
 
     //validate email if its correct
