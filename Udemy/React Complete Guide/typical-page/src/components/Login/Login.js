@@ -5,12 +5,41 @@ import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 
+//117 outside the component bc it doesnt need to interact with the component
+/*so set the state within this with a new object
+and set the email to be valid if the type is user-input*/
+const emailReducer = (state, action) => {
+  if(action.type === 'USER_INPUT') {
+    return {value: action.val, isValid: action.val.includes('@')}
+  }
+  if(action.type === 'INPUT_BLUR') {
+  return {value: state.value, isValid: state.value.includes('@')}
+  }
+  return {value: '', isValid: false}
+}
+
 const Login = (props) => {
-  const [enteredEmail, setEnteredEmail] = useState('');
-  const [emailIsValid, setEmailIsValid] = useState();
+  //comment these out bc now using reducer
+  // const [enteredEmail, setEnteredEmail] = useState('');
+  // const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  //117 understanding useReducer
+  //1 state snapshot used in the component re-render/reeval cycle
+  //2 function that can be used to dispatch a new action (trigger the update of the state)
+    //does not just set the state, dispatch an action, action is consumed by 3
+  //3 reducer function, gets state snap, gets the action and updates the state
+    //triggered automatically once an action is dispatched via 2 and received the latest state 1, and returns the new updated state
+  //4 initial state
+  //5 function to set inti state programatically
+  // const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn)
+  /*so this is the initial state*/
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: '', 
+    isValid: null,
+  })
+  
   //115 useeffect
 
   //this runs after every keystroke, after every reeval
@@ -45,26 +74,27 @@ const Login = (props) => {
   //if neither change, this will not run
   //helps to make sure we have one piece of code that reruns whenever the depens change
   //side effects are http reqs, also a side effect if save every keystroke after listen
-  useEffect(() => {
-    //we want to rerun this for every keystroke and validation - 112
-    //114 - this is not super efficient bc everykey storke is recorded
-    //set the timeout to be 500 seconds before this is triggered
-    const identifier = setTimeout(() => {
-      setFormIsValid(
-        enteredEmail.includes('@') && enteredPassword.trim().length > 6
-      )  
-    }, 500)
+  // useEffect(() => {
+  //   //we want to rerun this for every keystroke and validation - 112
+  //   //114 - this is not super efficient bc everykey storke is recorded
+  //   //set the timeout to be 500 seconds before this is triggered
+  //   const identifier = setTimeout(() => {
+  //     setFormIsValid(
+  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
+  //     )  
+  //   }, 500)
     
-    //runs as a clean up process beofre useeffect runs agains
-    //clean up also happens whenever the component is rerun
-    return () => {
-      clearTimeout(identifier)
-    }
-  }, [enteredEmail, enteredPassword])
+  //   //runs as a clean up process beofre useeffect runs agains
+  //   //clean up also happens whenever the component is rerun
+  //   return () => {
+  //     clearTimeout(identifier)
+  //   }
+  // }, [enteredEmail, enteredPassword])
 
     //validate email if its correct
   const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
+    //so this triggers emailReducer bc this is the function used to do that
+    dispatchEmail({type: 'USER_INPUT', val: event.target.value})
     //116 updating this state based on another state, shouldnt do that bc this code could acc lead to this running before enteredPass was entered
     setFormIsValid(
       event.target.value.includes('@') && enteredPassword.trim().length > 6
@@ -75,12 +105,13 @@ const Login = (props) => {
     setEnteredPassword(event.target.value);
 
     setFormIsValid(
-      event.target.value.trim().length > 6 && enteredEmail.includes('@')
+      //so change this to emailstate bc thats what were doing rn
+      emailState.isValid && event.target.value.trim().length > 6
     );
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes('@'));
+    dispatchEmail({type: 'INPUT_BLUR'})
   };
 
   const validatePasswordHandler = () => {
@@ -89,7 +120,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(enteredEmail, enteredPassword);
+    props.onLogin(emailState.value, enteredPassword);
   };
 
   return (
@@ -97,14 +128,14 @@ const Login = (props) => {
       <form onSubmit={submitHandler}>
         <div
           className={`${classes.control} ${
-            emailIsValid === false ? classes.invalid : ''
+            emailState.isValid === false ? classes.invalid : ''
           }`}
         >
           <label htmlFor="email">E-Mail</label>
           <input
             type="email"
             id="email"
-            value={enteredEmail}
+            value={emailState.value}
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
           />
