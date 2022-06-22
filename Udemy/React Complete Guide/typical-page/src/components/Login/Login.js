@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -10,6 +10,19 @@ const Login = (props) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+
+    //no depens == only run once
+    //using setformisvalid and enteredemail + passw
+    //theref u add these three bc after login function execution, only if either setform is valid or if eneteredemail/passw change
+  //if neither change, this will not run
+  //helps to make sure we have one piece of code that reruns whenever the depens change
+  //side effects are http reqs, also a side effect if save every keystroke after listen
+  useEffect(() => {
+    //we want to rerun this for every keystroke and validation
+    setFormIsValid(
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    )
+  }, [enteredEmail, enteredPassword])
 
     //validate email if its correct
   const emailChangeHandler = (event) => {
