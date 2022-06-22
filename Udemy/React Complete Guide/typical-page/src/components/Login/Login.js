@@ -10,6 +10,32 @@ const Login = (props) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  //115 useeffect
+
+  //this runs after every keystroke, after every reeval
+  useEffect(() => {
+    console.log('hi');
+  })
+  //only runs for the first time and not for any subsequent rerender
+  useEffect(() => {
+    console.log('hi');
+  }, [])
+
+    //only runs the first time + keystrokes in password input, whenever password changes this runs
+  useEffect(() => {
+    console.log('hi');
+  }, [enteredPassword])
+
+  useEffect(() => {
+    console.log('hi');
+    //cleanup runs before the state functions as a whole runs but not before the first time it runs
+    return () => {}
+  }, [enteredPassword])
+
+  useEffect(() => {
+    console.log('hi');
+    return () => {}
+  }, [])
 
     //no depens == only run once
     //using setformisvalid and enteredemail + passw
