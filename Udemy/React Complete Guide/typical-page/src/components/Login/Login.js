@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useReducer } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -64,7 +65,7 @@ const Login = (props) => {
     //validate email if its correct
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-
+    //116 updating this state based on another state, shouldnt do that bc this code could acc lead to this running before enteredPass was entered
     setFormIsValid(
       event.target.value.includes('@') && enteredPassword.trim().length > 6
     );
