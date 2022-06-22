@@ -17,13 +17,24 @@ const emailReducer = (state, action) => {
   }
   return {value: '', isValid: false}
 }
+// 118 password reducer
+const passwordReducer = (state, action) => {
+  if(action.type === 'USER_INPUT') {
+    return {value: action.val, isValid: action.val.trim().length > 6}
+  }
+  if(action.type === 'INPUT_BLUR') {
+  return {value: state.value, isValid: state.value.trim().length > 6}
+  }
+  return {value: '', isValid: false}
+}
 
 const Login = (props) => {
   //comment these out bc now using reducer
   // const [enteredEmail, setEnteredEmail] = useState('');
   // const [emailIsValid, setEmailIsValid] = useState();
-  const [enteredPassword, setEnteredPassword] = useState('');
-  const [passwordIsValid, setPasswordIsValid] = useState();
+  //118 comment these out for useReducer
+  // const [enteredPassword, setEnteredPassword] = useState('');
+  // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
   //117 understanding useReducer
   //1 state snapshot used in the component re-render/reeval cycle
@@ -40,6 +51,11 @@ const Login = (props) => {
     isValid: null,
   })
   
+  const [passState, dispatchPass] = useReducer(passwordReducer, {
+    value: '', 
+    isValid: null,
+  })
+
   //115 useeffect
 
   //this runs after every keystroke, after every reeval
@@ -52,15 +68,15 @@ const Login = (props) => {
   }, [])
 
     //only runs the first time + keystrokes in password input, whenever password changes this runs
-  useEffect(() => {
-    console.log('hi');
-  }, [enteredPassword])
+  // useEffect(() => {
+  //   console.log('hi');
+  // }, [enteredPassword])
 
-  useEffect(() => {
-    console.log('hi');
-    //cleanup runs before the state functions as a whole runs but not before the first time it runs
-    return () => {}
-  }, [enteredPassword])
+  // useEffect(() => {
+  //   console.log('hi');
+  //   //cleanup runs before the state functions as a whole runs but not before the first time it runs
+  //   return () => {}
+  // }, [enteredPassword])
 
   //cleanup only when component is removed from the dom, so after the entire login is completed
   useEffect(() => {
@@ -74,40 +90,53 @@ const Login = (props) => {
   //if neither change, this will not run
   //helps to make sure we have one piece of code that reruns whenever the depens change
   //side effects are http reqs, also a side effect if save every keystroke after listen
-  // useEffect(() => {
-  //   //we want to rerun this for every keystroke and validation - 112
-  //   //114 - this is not super efficient bc everykey storke is recorded
-  //   //set the timeout to be 500 seconds before this is triggered
-  //   const identifier = setTimeout(() => {
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  //     )  
-  //   }, 500)
+  //118 uncomment this out were gonna use it for form validity
+  //so this runs with the latest state value
+  /*this is a problem tho bc it runs everytime the email or pass state is changed, runs too often */
+  //so use object destructuring to pull out certain things from objects
+  //get them an alias, and use them as constant
+  const {isValid: emailIsValid} = emailState
+  const {isValid: passIsValid} = passState
+
+  useEffect(() => {
+    //we want to rerun this for every keystroke and validation - 112
+    //114 - this is not super efficient bc everykey storke is recorded
+    //set the timeout to be 500 seconds before this is triggered
+    const identifier = setTimeout(() => {
+      setFormIsValid(
+        emailIsValid && passIsValid
+      )  
+    }, 500)
     
-  //   //runs as a clean up process beofre useeffect runs agains
-  //   //clean up also happens whenever the component is rerun
-  //   return () => {
-  //     clearTimeout(identifier)
-  //   }
-  // }, [enteredEmail, enteredPassword])
+    //runs as a clean up process beofre useeffect runs agains
+    //clean up also happens whenever the component is rerun
+    return () => {
+      clearTimeout(identifier)
+    }
+  }, [emailIsValid, passIsValid])
 
     //validate email if its correct
   const emailChangeHandler = (event) => {
     //so this triggers emailReducer bc this is the function used to do that
     dispatchEmail({type: 'USER_INPUT', val: event.target.value})
     //116 updating this state based on another state, shouldnt do that bc this code could acc lead to this running before enteredPass was entered
-    setFormIsValid(
-      event.target.value.includes('@') && enteredPassword.trim().length > 6
-    );
+    //118 commwent this out bc were gonnna do form validity with useEffect
+    // setFormIsValid(
+    //   event.target.value.includes('@') && passState.isValid )
   };
 
   const passwordChangeHandler = (event) => {
-    setEnteredPassword(event.target.value);
+    // setEnteredPassword(event.target.value);
+    
 
-    setFormIsValid(
-      //so change this to emailstate bc thats what were doing rn
-      emailState.isValid && event.target.value.trim().length > 6
-    );
+    //118 CHANGE this to use the passDispatch
+    dispatchPass({type: 'USER_INPUT', val: event.target.value})
+
+      //118 comment this out were gonna do useeffect
+    // setFormIsValid(
+    //   //so change this to emailstate bc thats what were doing rn
+    //   emailState.isValid && event.target.value.trim().length > 6
+    // );
   };
 
   const validateEmailHandler = () => {
@@ -115,12 +144,13 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    // setPasswordIsValid(enteredPassword.trim().length > 6);
+    dispatchPass({type: 'INPUT_BLUR'})
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, enteredPassword);
+    props.onLogin(emailState.value, passState.value);
   };
 
   return (
@@ -142,14 +172,14 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
+            passState.isValid === false ? classes.invalid : ''
           }`}
         >
           <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
-            value={enteredPassword}
+            value={passState.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
