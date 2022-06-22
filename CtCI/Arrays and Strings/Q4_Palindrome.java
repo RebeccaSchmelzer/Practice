@@ -14,5 +14,4 @@ public class Q4_Palindrome {
         }
         return count <=1;
     }
-    
 }

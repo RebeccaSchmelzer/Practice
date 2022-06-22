@@ -11,6 +11,7 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+    //validate email if its correct
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
 
