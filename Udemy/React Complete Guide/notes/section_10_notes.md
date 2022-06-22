@@ -16,3 +16,15 @@
 ## useReducer
 - useState becomes tough when state becomes rlly complex and if u have multiple states and depens and multiple changes
 - useReducer can be tougher to set up but easier to work with
+
+## useState vs. useReducer
+- when useState becomes too complicated, multiple states to keep track of
+- uS
+    - main state manager
+    - great for indep pieces of data
+    - great for simple state updates
+    - only low coupling
+- uR
+    - great for more power
+    - more complex state updating logic, always guaranteed newst data
+    - considered if you have related pieces of state/data
