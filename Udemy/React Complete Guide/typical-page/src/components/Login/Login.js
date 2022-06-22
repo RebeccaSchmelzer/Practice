@@ -32,6 +32,7 @@ const Login = (props) => {
     return () => {}
   }, [enteredPassword])
 
+  //cleanup only when component is removed from the dom, so after the entire login is completed
   useEffect(() => {
     console.log('hi');
     return () => {}
