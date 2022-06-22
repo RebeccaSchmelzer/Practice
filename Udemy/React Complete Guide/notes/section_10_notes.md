@@ -37,3 +37,9 @@
 - for the button, button should be reusable but of context is used to make sure that user is always logged out onclick, context will not be able to be used other then for that
 - not optimized for high freq changes, so state changes multiple times per second
 - redux is for this
+
+## rules of hooks
+1. react hooks are only used in react functions
+2. dont call hooks in nested functions or any block statements
+3. add everything u refer to inside the depens of useEffect
+4. only add react hooks in top level
