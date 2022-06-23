@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useReducer } from 'react';
 
 import Card from '../UI/Card/Card';
@@ -60,6 +60,10 @@ const Login = (props) => {
 
   //set up use context - 125
   const authCtx = useContext(AuthContext)
+
+  //set up useref - 129
+  const emailInputRef = useRef()
+  const passwordInputRef = useRef()
 
   //115 useeffect
 
@@ -155,17 +159,24 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    //125 change this from props to useContext Hook
-    authCtx.onLogin(emailState.value, passState.value);
+    if (formIsValid) {
+      authCtx.onLogin(emailState.value, passState.value);
+    } else if (!emailIsValid) {
+      emailInputRef.current.activate()
+    } else {
+      
+    }
+    // //125 change this from props to useContext Hook
+    // authCtx.onLogin(emailState.value, passState.value);
   };
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <Input id="email" label="E-mail" type="email" isValid={emailIsValid} value={emailState.value} onChange={emailChangeHandler} onBlur={validateEmailHandler}/>
-        <Input id="password" label="Password" type="password" isValid={passIsValid} value={passState.value} onChange={passwordChangeHandler} onBlur={validatePasswordHandler}/>
+        <Input ref={emailInputRef} id="email" label="E-mail" type="email" isValid={emailIsValid} value={emailState.value} onChange={emailChangeHandler} onBlur={validateEmailHandler}/>
+        <Input ref={passwordInputRef} id="password" label="Password" type="password" isValid={passIsValid} value={passState.value} onChange={passwordChangeHandler} onBlur={validatePasswordHandler}/>
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" className={classes.btn} >
             Login
           </Button>
         </div>
