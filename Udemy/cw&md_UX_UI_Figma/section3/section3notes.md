@@ -18,3 +18,8 @@
     - and draw em
 - draw out all pages
 - use that to draw site maps
+
+## sketching tips
+- dont worry about cleanliness
+- be lean and agile
+- communicate everything, share with ppl
