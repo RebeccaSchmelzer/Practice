@@ -23,3 +23,9 @@
 - dont worry about cleanliness
 - be lean and agile
 - communicate everything, share with ppl
+
+## finding inspo online
+- dribble - great for design patterns
+- pinterest as well
+- behance - images + design process
+- pttrns - cool UI elements
