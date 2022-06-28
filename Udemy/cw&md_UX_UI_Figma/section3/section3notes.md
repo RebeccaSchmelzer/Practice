@@ -16,3 +16,5 @@
 - draw out flow based on if statements
 - think off all diff types of scenarios
     - and draw em
+- draw out all pages
+- use that to draw site maps
