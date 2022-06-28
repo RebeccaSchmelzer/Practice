@@ -13,3 +13,6 @@
 
 ## sketching user flows
 - Concepts - sketching app
+- draw out flow based on if statements
+- think off all diff types of scenarios
+    - and draw em
