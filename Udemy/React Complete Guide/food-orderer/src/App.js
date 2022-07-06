@@ -1,9 +1,9 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
+import CartProvider from "./store/CartProvider";
 
-//need to manage state with react
 
 function App() {
   const [showCard, setShowCard] = useState(false)
@@ -23,14 +23,19 @@ function App() {
   - put hidecarthandler within the cart component bc thats where we handle it
   
   */ 
+
+  /*
+    142
+    - add context here since every component needs access to the cart data
+  */
   return (
-    <Fragment>
+    <CartProvider>
       {showCard && <Cart onClose={hideCartHandler}/>}
       <Header onShowCart={showCardHandler}/>
       <main>
         <Meals />
       </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 
