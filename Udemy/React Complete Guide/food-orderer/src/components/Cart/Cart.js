@@ -17,11 +17,11 @@ const Cart = (props) => {
     const hasitems = cardctx.items.length > 0
 
     const cartitemremoveHandle = id => {
-
+        
     }
 
     const cartitemAddHandle = item => {
-        
+        cardctx.addItem({...item, amount:1})
     }
 
     const cartItems = <ul className={classes['cart-items']}>{[
