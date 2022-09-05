@@ -21,3 +21,11 @@
 
 ### virtual dom diffing
 - only the change is highlighted in the dom and inserts the differences, not re-rendering the entire component
+
+### a first summary
+- in react, u work with function components - return jsx code
+- in components work with state, context or props
+- react takes result of this eval and compares to the prev, and then hands the diffs to the real dom
+- when re-eval, reruns all components
+- use react.memo to specify which component to re-eval
+- usecallback tell react to store a function and not recreate it when the surrounding function runs again as long as certain dependencies dont change
