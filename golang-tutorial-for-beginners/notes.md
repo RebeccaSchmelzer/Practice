@@ -18,3 +18,7 @@
     - docker and kubernetes
 - can be built very fast - uses fewer CPU and RAM to work
 - compiles into a single binary - and use it across different OS
+
+
+## vars
+- like JS, vars can be changed but consts cannot
