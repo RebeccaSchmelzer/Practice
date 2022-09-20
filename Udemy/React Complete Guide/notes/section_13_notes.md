@@ -7,3 +7,4 @@
 - functional components is most modern approach
 - classes were required in the past - in order to manage state and effects
 - changed with 16.8 that introduced useState and useEffect
+- classes cant use React hooks!
