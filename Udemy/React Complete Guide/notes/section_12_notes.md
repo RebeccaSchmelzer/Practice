@@ -52,3 +52,5 @@ setState((prev) => !prev)
     - allows u to memoize to store any data u want to store, justv liike usecallback for functions
     - this hook needs a function as a first argument
     - function should return what you want to store
+    - second arg, array of depends - ensure stored value is updated whenever one of the values youre using in there changes.
+    - so whatever could change in your return statement should be in the depends
