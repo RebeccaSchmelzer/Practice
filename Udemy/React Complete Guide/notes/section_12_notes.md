@@ -41,3 +41,14 @@ setState((prev) => !prev)
 - for every state change where you depend on the previous state, you get the latest state
 - this above gets priority, if you were to not use that you would just need to re-rendr the component and react makes its own priority
 - when setting state within a const in a component, the state is not updated immedietely but only scheduled for when the component re-renders
+
+### optimizing with useMemo()
+- use React.memo() to avoid uneccessary re-evals
+- wrap around export statement for entire component
+- runs initially, but then doesnt run anymore
+- will re-run when parent component re-runs
+- usecallback to store function objects and only rebuild them when some inputs changes
+- useMemo hook
+    - allows u to memoize to store any data u want to store, justv liike usecallback for functions
+    - this hook needs a function as a first argument
+    - function should return what you want to store
