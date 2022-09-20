@@ -29,3 +29,15 @@
 - when re-eval, reruns all components
 - use react.memo to specify which component to re-eval
 - usecallback tell react to store a function and not recreate it when the surrounding function runs again as long as certain dependencies dont change
+
+### how react handles state updates
+ex/
+- thru schedules
+- react schedules a state update with new data
+- react actually can postpone that state update - depending on priority
+- after state change is processed then it will update component
+ex//
+setState((prev) => !prev)
+- for every state change where you depend on the previous state, you get the latest state
+- this above gets priority, if you were to not use that you would just need to re-rendr the component and react makes its own priority
+- when setting state within a const in a component, the state is not updated immedietely but only scheduled for when the component re-renders
