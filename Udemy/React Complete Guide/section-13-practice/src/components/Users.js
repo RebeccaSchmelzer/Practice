@@ -3,11 +3,11 @@ import User from './User';
 
 import classes from './Users.module.css';
 
-const DUMMY_USERS = [
-  { id: 'u1', name: 'Max' },
-  { id: 'u2', name: 'Manuel' },
-  { id: 'u3', name: 'Julie' },
-];
+// const DUMMY_USERS = [
+//   { id: 'u1', name: 'Max' },
+//   { id: 'u2', name: 'Manuel' },
+//   { id: 'u3', name: 'Julie' },
+// ];
 
 /**
  * 166 
@@ -21,6 +21,13 @@ const DUMMY_USERS = [
  * so use .bind(this) - now the this inside the func has the same context/value as the main this when the code is evaluated
  * when constrctor is added and u extend another clss u need to call super which calls the construcotr of the super class, so the class were inheriting from
  */
+
+  /**
+   * 167
+   * component did mount called once when component is mounted - like useeffect without depens
+   * componwent did update called once when component updated - like useeffect with depends
+   * component will unmount - like clean up for useeffect
+   */
 
 class Users extends Component {
   constructor() {
@@ -42,7 +49,7 @@ class Users extends Component {
 
     const usersList = (
       <ul>
-        {DUMMY_USERS.map((user) => (
+        {this.props.users.map((user) => (
           <User key={user.id} name={user.name} />
         ))}
       </ul>
