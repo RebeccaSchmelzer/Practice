@@ -29,6 +29,8 @@ import classes from './Users.module.css';
    * component will unmount - like clean up for useeffect
    */
 
+  
+
 class Users extends Component {
   constructor() {
     super()
@@ -36,6 +38,8 @@ class Users extends Component {
       showUsers: true
     }
   }
+
+
 
   toggleUsersHandler () {
     // this.state.showUsers = false - this doesnt work
