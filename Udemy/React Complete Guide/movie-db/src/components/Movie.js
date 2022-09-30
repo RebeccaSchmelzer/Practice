@@ -13,3 +13,17 @@ const Movie = (props) => {
 };
 
 export default Movie;
+
+
+/**
+ * 177
+ * fetch returns a promise, eventually yields data
+ * result will be there at some point in the future
+ */
+
+/**
+ * 181
+ * usecallback
+ * bc putting fetchmovies in the depens creates an infinite loop
+ * put useeffect after callback for it to work
+ */

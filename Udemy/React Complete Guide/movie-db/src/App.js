@@ -1,88 +1,71 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import MoviesList from './components/MoviesList';
+import AddMovie from './components/AddMovie';
 import './App.css';
 
-/**
- * 177
- * fetch returns a promise, eventually yields data
- * result will be there at some point in the future
- */
-
-/**
- * 181
- * usecallback
- * bc putting fetchmovies in the depens creates an infinite loop
- * put useeffect after callback for it to work
- */
 function App() {
-  const [movies, setMovies] = useState([])
-  const [loading, isLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchMovies() //now called again when component is reevaled
-  }, [fetchMovies]) //never runs again unless page is reloaded, but good practice is to put all depens
-  // const dummyMovies = [
-  //   {
-  //     id: 1,
-  //     title: 'Some Dummy Movie',
-  //     openingText: 'This is the opening text of the movie',
-  //     releaseDate: '2021-05-18',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Some Dummy Movie 2',
-  //     openingText: 'This is the second opening text of the movie',
-  //     releaseDate: '2021-05-19',
-  //   },
-  //];
-  const fetchMovies = useCallback(async() => {
-    isLoading(true)
-    setError(null)
+  const fetchMoviesHandler = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
     try {
-      const res = await fetch('https://swapi.dev/api/films/')
-    
-      if(!res.ok) {
-        throw new Error('Something went wrong')
+      const response = await fetch('https://movie-db-7e32c-default-rtdb.firebaseio.com/movies.json');
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
       }
-      const data = await res.json()
 
+      const data = await response.json();
 
-    
-      const transformedMovies = data.results.map(movieData => {
+      const transformedMovies = data.results.map((movieData) => {
         return {
           id: movieData.episode_id,
           title: movieData.title,
           openingText: movieData.opening_crawl,
-          releaseDate: movieData.release_date
-        }
-      })
-      setMovies(data.results)
-      
+          releaseDate: movieData.release_date,
+        };
+      });
+      setMovies(transformedMovies); 
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
-    isLoading(false)
-    
-    
-  }, [])
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
-    fetchMovies() //now called again when component is reevaled
-  }, [fetchMovies]) //never runs again unless page is reloaded, but good practice is to put all depens
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
+
+  function addMovieHandler(movie) {
+    console.log(movie);
+  }
+
+  let content = <p>Found no movies.</p>;
+
+  if (movies.length > 0) {
+    content = <MoviesList movies={movies} />;
+  }
+
+  if (error) {
+    content = <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  }
 
   return (
     <React.Fragment>
       <section>
-        <button onClick={fetchMovies}>Fetch Movies</button>
+        <AddMovie onAddMovie={addMovieHandler} />
       </section>
       <section>
-        {!loading && <MoviesList movies={movies} />}
-        
-        {loading && <p>Loading...</p>}
-        {!loading && error && <p>{error}</p>}
+        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
+      <section>{content}</section>
     </React.Fragment>
   );
 }
