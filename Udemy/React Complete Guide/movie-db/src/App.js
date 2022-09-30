@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
@@ -9,10 +9,20 @@ import './App.css';
  * result will be there at some point in the future
  */
 
+/**
+ * 181
+ * usecallback
+ * bc putting fetchmovies in the depens creates an infinite loop
+ * put useeffect after callback for it to work
+ */
 function App() {
   const [movies, setMovies] = useState([])
   const [loading, isLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchMovies() //now called again when component is reevaled
+  }, [fetchMovies]) //never runs again unless page is reloaded, but good practice is to put all depens
   // const dummyMovies = [
   //   {
   //     id: 1,
@@ -27,7 +37,7 @@ function App() {
   //     releaseDate: '2021-05-19',
   //   },
   //];
-  async function fetchMovies() {
+  const fetchMovies = useCallback(async() => {
     isLoading(true)
     setError(null)
     try {
@@ -56,7 +66,11 @@ function App() {
     isLoading(false)
     
     
-  }
+  }, [])
+
+  useEffect(() => {
+    fetchMovies() //now called again when component is reevaled
+  }, [fetchMovies]) //never runs again unless page is reloaded, but good practice is to put all depens
 
   return (
     <React.Fragment>
