@@ -4,10 +4,10 @@ const User = {
     isActive: true
 }
 
-function createUser({name: string, isPaid: boolean}) {
+// function createUser({name: string, isPaid: boolean}) {
 
-}
+// }
 
-createUser({name: 'bex', isPaid: false})
+//createUser({name: 'bex', isPaid: false})
 
 export {}
