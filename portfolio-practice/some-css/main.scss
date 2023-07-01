@@ -1,7 +1,31 @@
-@import 'layout/header' //use layout and header scss files here, also 
+//@import 'layout/header' //use layout and header scss files here, also 
 //base has all resets, vrs, mixins, and utility classes
 //layout has all container and grid system css
 //components has anything reusable such as button, navbars and cards
 
 //total you have 7 folders all being imported into the main file
 //abstracts, base, components, layout, pages, themes, vendors
+
+body {
+    background-color: #ccc;
+}
+
+h1 {
+    color: black;
+}
+
+.info {
+    background-color: black;
+    color: white;
+}
+
+.warning {
+    color: red;
+}
+
+.primary {
+    background-color: black;
+    color: green;
+}
+
+

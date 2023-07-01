@@ -1,0 +1,23 @@
+body {
+  background-color: #ccc;
+}
+
+h1 {
+  color: black;
+}
+
+.info {
+  background-color: black;
+  color: white;
+}
+
+.warning {
+  color: red;
+}
+
+.primary {
+  background-color: black;
+  color: green;
+}
+
+/*# sourceMappingURL=main.css.map */
