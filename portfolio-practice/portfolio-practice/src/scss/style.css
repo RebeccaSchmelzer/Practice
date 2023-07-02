@@ -1,0 +1,28 @@
+nav {
+  background-color: #f4e9e1;
+}
+
+.nav-items button {
+  width: 68px;
+  height: 56px;
+  align-items: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  pointer-events: all;
+  position: relative;
+}
+
+.nav-items button span {
+  font-size: 10px;
+  margin-left: 8px;
+  margin-top: 8px;
+}/*# sourceMappingURL=style.css.map */

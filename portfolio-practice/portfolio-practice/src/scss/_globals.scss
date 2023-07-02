@@ -1,0 +1,8 @@
+html {
+    background: $bkgrd;
+}
+
+#root, div, .navigation, button {
+    align-items: center;
+    display: flex;
+}
