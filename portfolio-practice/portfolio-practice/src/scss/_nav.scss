@@ -72,6 +72,20 @@
             pointer-events: all;
             position: relative;
             width: 178px;
+
+            .nav-item-number {
+                font-size: 12px;
+                margin-left: 16px;
+                margin-top: 16px;
+                color: $bkgrd;
+            }
+
+            .nav-item-text {
+                font-size: 12px;
+                color: $bkgrd;
+                margin-left: 16px;
+                margin-bottom: 16px;
+            }
         }
     }
 }
