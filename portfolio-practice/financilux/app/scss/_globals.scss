@@ -1,0 +1,14 @@
+html {
+    font-size: 100%; //100% of parent size
+    box-sizing: border-box; //make the box the size of content plus padding and border
+}
+
+*, *::before, *::after { //universal selector + pseudo-element, insert content before content of an element, so before every element also apply border box
+    box-sizing: inherit; //make sure all pseudo elements have border box box sizing
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.3;
+}
