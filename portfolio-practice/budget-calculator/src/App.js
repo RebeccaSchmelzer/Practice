@@ -16,6 +16,9 @@ function App() {
             <input type="text" name="" id="" placeholder='hours for the week' value={number} onChange={(e) => setNumber(e.target.value)}/>
             <button type="submit">calculate</button>
         </form>
+        <form>
+          <input type='checkbox' placeholder='hi'/>
+        </form>
     </div>
   );
 }
