@@ -13,4 +13,13 @@ body {
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 1.125rem;
   color: hsl(241, 100%, 89%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
