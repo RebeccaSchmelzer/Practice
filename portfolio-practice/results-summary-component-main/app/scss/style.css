@@ -8,8 +8,8 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+  width: 100vw;
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 1.125rem;
   color: hsl(241, 100%, 89%);
@@ -18,8 +18,21 @@ body {
   align-items: center;
 }
 
-.flex {
+main {
+  width: 75%;
+  background-color: #F2FCFC;
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+section {
+  border: 1px solid red;
+  width: 50%;
+}
+
+img {
+  width: 100px;
+}
+
+.container {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */
