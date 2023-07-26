@@ -25,8 +25,48 @@ main {
 }
 
 section {
-  border: 1px solid red;
+  text-align: center;
+  height: 515px;
   width: 50%;
+}
+section.testimonial {
+  background: linear-gradient(to top, hsl(241, 81%, 54%), hsl(252, 100%, 67%));
+  border-radius: 30px;
+}
+section.testimonial h3 {
+  margin: 45px;
+}
+section.testimonial div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section.testimonial div.score {
+  width: 205px;
+  height: 205px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(to top, hsla(241, 72%, 46%, 0), hsl(256, 72%, 46%));
+  display: block;
+}
+section.testimonial div p.num {
+  padding-top: 64px;
+  color: hsl(0, 0%, 100%);
+  font-size: 52px;
+  margin-bottom: 0;
+}
+section.testimonial div p.of {
+  margin: 0;
+}
+section.testimonial h2 {
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 10px;
+}
+section.testimonial p.desc {
+  height: 64px;
+  width: 240px;
+  margin: auto;
+  padding-bottom: 40px;
 }
 
 img {

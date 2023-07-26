@@ -25,8 +25,57 @@ main {
 }
 
 section {
-  border: 1px solid red;
+    text-align: center;
+    height: 515px;
   width: 50%;
+
+  &.testimonial {
+    background: linear-gradient(to top, $lightRoyalBlue, $lightBlue);
+    border-radius: 30px;
+
+    h3 {
+        margin: 45px;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.score {
+            width: 205px;
+            height: 205px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: linear-gradient(to top, $persianBlue, $violetBlue);
+            display: block;
+        }
+
+        p {
+
+            &.num {
+                padding-top: 64px;
+                color: $white;
+                font-size: 52px;
+                margin-bottom: 0;
+
+            }
+            &.of {
+                margin: 0;
+            }
+        }
+    }
+    h2 {
+        color: $white;
+        margin-bottom: 10px;
+    }
+    p {
+        &.desc {
+        height: 64px;
+        width: 240px;
+            margin: auto;
+            padding-bottom: 40px;
+        }
+    }
+  }
 }
 
 img {
