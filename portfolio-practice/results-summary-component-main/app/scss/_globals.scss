@@ -20,7 +20,7 @@ body {
 
 main {
   width: 75%;
-  background-color: #F2FCFC;
+  background-color: $white;
   display: flex;
 }
 
@@ -76,8 +76,8 @@ section {
         }
     }
   }
+  &.signup-form {
+    box-shadow: 2px 20px $paleBlue;
+  }
 }
 
-img {
-  width: 100px;
-}
