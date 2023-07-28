@@ -77,7 +77,31 @@ section {
     }
   }
   &.signup-form {
-    box-shadow: 2px 20px $paleBlue;
+    box-shadow: 2px 2px 20px $paleBlue;
+    border-radius: 20px;
+    text-align: left;
+    padding-left: 42px;
+     h3 {
+        color: $darkGreyBlue;
+        padding-bottom: 30px;
+        margin-bottom: 0;
+     }
+     div {
+        width: 290px;
+        height: 60px;
+        &.box {
+            display: flex;
+            background: $lightRed;
+            opacity: 0.2;
+        }
+     }
+     img {
+        &.svg {
+            width: 15px;
+            height: 18px;
+            margin: 20px 0;
+        }
+     }
   }
 }
 

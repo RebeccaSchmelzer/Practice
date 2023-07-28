@@ -69,7 +69,29 @@ section.testimonial p.desc {
   padding-bottom: 40px;
 }
 section.signup-form {
-  box-shadow: 2px 20px hsl(221, 100%, 96%);
+  box-shadow: 2px 2px 20px hsl(221, 100%, 96%);
+  border-radius: 20px;
+  text-align: left;
+  padding-left: 42px;
+}
+section.signup-form h3 {
+  color: hsl(224, 30%, 27%);
+  padding-bottom: 30px;
+  margin-bottom: 0;
+}
+section.signup-form div {
+  width: 290px;
+  height: 60px;
+}
+section.signup-form div.box {
+  display: flex;
+  background: hsl(0, 100%, 67%);
+  opacity: 0.2;
+}
+section.signup-form img.svg {
+  width: 15px;
+  height: 18px;
+  margin: 20px 0;
 }
 
 .container {
