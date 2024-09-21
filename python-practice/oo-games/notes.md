@@ -1,0 +1,11 @@
+### the 4 main principles of OOP
+- encapsulation
+    - refers to the bundling of data (attributes) and methods (functions) that operate on the data into a single unit or class. It helps in hiding the internal state of an object
+    - methods like getters and setters to control access and modification.
+- abstraction
+    - Abstraction refers to the process of hiding the complex implementation details and showing only the essential features of the object. It allows for building models that represent real-world entities and interactions. 
+- polymorphism
+    - refers to the ability of objects to take on multiple forms or behaviors depending on their context or the type of data they operate on.
+- inheritance
+    - Inheritance allows a class (subclass or derived class) to inherit attributes and methods from another class (superclass or base class), promoting code reuse and creating a hierarchy of classes.
+    - using super() and can extend/override classes. 
