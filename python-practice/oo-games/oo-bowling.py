@@ -61,3 +61,9 @@ game.roll(10)  # Strike in bonus roll 1
 game.roll(9)   # 9 pins in the last bonus roll
 
 print(game.calculate_score())  # Outputs the final score of the game
+
+
+## oo bc instead of keeping in info in local vars like in functional, we store game state in instance vars, encapsed in methods for clarity
+# helper methods are encapsulating specific logic
+
+# we can extend this to more logic added like tracking frames and handling edge cases. 
